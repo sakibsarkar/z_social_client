@@ -6,6 +6,7 @@ import {
   useUpdateUserImageMutation,
   useUpdateUserInfoMutation,
 } from "@/redux/features/auth/user.api";
+
 import { useAppSelector } from "@/redux/hook";
 import { TUser } from "@/types/user";
 import { local_img_url } from "@/utils/localImageURL";
@@ -14,7 +15,6 @@ import { UploadIcon } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
-import "react-phone-number-input/style.css";
 import { toast } from "sonner";
 import * as Yup from "yup";
 

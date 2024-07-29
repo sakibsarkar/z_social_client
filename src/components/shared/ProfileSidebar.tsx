@@ -33,7 +33,6 @@ const ProfileSidebar = () => {
         <FaArrowLeft /> Go Back
       </button>
       {user &&
-        user.role === "user" &&
         userProfileLinks.map(({ Icon, href, label }, i) => (
           <Link
             href={href}

@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { useResetPasswordMutation } from "@/redux/features/auth/auth.api";
 import { useAppSelector } from "@/redux/hook";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import "react-phone-number-input/style.css";
 import { toast } from "sonner";
 import * as Yup from "yup";
 const initialValues = {

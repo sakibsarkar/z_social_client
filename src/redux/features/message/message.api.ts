@@ -6,7 +6,7 @@ const messageApi = api.injectEndpoints({
   endpoints: (builder) => ({
     chatHeads: builder.query<{ data: TUser[] }, undefined>({
       query: () => ({
-        url: "/chat-heads/",
+        url: "/user",
         method: "GET",
       }),
       providesTags: ["message"],

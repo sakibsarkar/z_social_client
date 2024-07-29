@@ -5,7 +5,7 @@ export type TUser = {
   lastName: string;
   gender: "male" | "female";
   createdAt: string;
-  profilePic: string;
+  image: string;
   onlineStatus: {
     isOnline: boolean;
     time: Date;
