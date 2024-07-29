@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSocketContext } from "@/provider/SocketProvider";
+import { localAvatar } from "@/redux/features/auth/auth.slice";
 import {
   useGetMessagesQuery,
   useSendMessageMutation,
@@ -13,6 +14,7 @@ import {
 import { useAppSelector } from "@/redux/hook";
 import { TUser } from "@/types/user";
 import { MoveHorizontalIcon, SendIcon } from "lucide-react";
+import Image from "next/image";
 import { FormEvent, KeyboardEvent, SetStateAction, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
@@ -99,8 +101,16 @@ const ChatInterface: React.FC<IProps> = ({ selectedChat, setselectedChat }) => {
         <div className="flex flex-1 flex-col">
           <div className="flex items-center gap-4 border-b bg-background px-4 py-3 sm:px-6">
             <Avatar className="h-8 w-8">
-              <AvatarImage src="/placeholder-user.jpg" />
-              <AvatarFallback>AC</AvatarFallback>
+              <AvatarImage src={selectedChat.image} />
+              <AvatarFallback>
+                <Image
+                  className="rounded-full object-cover w-full h-full"
+                  width={50}
+                  height={50}
+                  src={localAvatar}
+                  alt="avatar"
+                />
+              </AvatarFallback>
             </Avatar>
             <div className="flex-1 truncate font-medium">
               {selectedChat.firstName} {selectedChat.lastName}

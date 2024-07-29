@@ -7,10 +7,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { localAvatar } from "@/redux/features/auth/auth.slice";
 import { useChatHeadsQuery } from "@/redux/features/message/message.api";
 import { TUser } from "@/types/user";
 import { formatDistanceToNow } from "date-fns";
 import { MoveHorizontalIcon } from "lucide-react";
+import Image from "next/image";
 import React, { SetStateAction } from "react";
 
 interface IProps {
@@ -56,8 +58,16 @@ const ChatSidebar: React.FC<IProps> = ({ selectedChat, setselectedChat }) => {
               >
                 <div className="relative">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="/placeholder-user.jpg" />
-                    <AvatarFallback>AC</AvatarFallback>
+                    <AvatarImage src={user.image} />
+                    <AvatarFallback>
+                      <Image
+                        className="rounded-full object-cover w-full h-full"
+                        width={50}
+                        height={50}
+                        src={localAvatar}
+                        alt="avatar"
+                      />
+                    </AvatarFallback>
                   </Avatar>
                   <div className="w-3 h-3 border-[1px] bg-borderDark p-[1px] absolute right-[-3px] top-[-2px] rounded-full">
                     <Avatar

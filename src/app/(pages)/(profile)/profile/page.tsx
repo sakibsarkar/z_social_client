@@ -1,5 +1,6 @@
 "use client";
 import Loader from "@/components/shared/Loader";
+import { localAvatar } from "@/redux/features/auth/auth.slice";
 import { useAppSelector } from "@/redux/hook";
 import { format } from "date-fns";
 import Cookies from "js-cookie";
@@ -29,7 +30,7 @@ const Profile = () => {
           className="w-[120px] h-[120px] rounded-full overflow-hidden bg-red-100 relative group/profile"
         >
           <Image
-            src={user?.image || "/images/avatar.jpg"}
+            src={user?.image || localAvatar}
             width={120}
             height={120}
             alt="avatar"

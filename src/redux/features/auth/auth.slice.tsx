@@ -1,6 +1,7 @@
 import { TUser } from "@/types/user";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+export const localAvatar = "/images/avatar.jpg";
 type TAuthState = {
   user: TUser | null;
   isLoading: boolean;
@@ -35,5 +36,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, logout, setLoading, setToken,setState } = userSlice.actions;
+export const { setUser, logout, setLoading, setToken, setState } =
+  userSlice.actions;
 export default userSlice.reducer;

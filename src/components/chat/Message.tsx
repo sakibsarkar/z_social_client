@@ -1,7 +1,9 @@
 "use client";
+import { localAvatar } from "@/redux/features/auth/auth.slice";
 import { useAppSelector } from "@/redux/hook";
 import { IMessage } from "@/types/message";
 import { format } from "date-fns";
+import Image from "next/image";
 import { useState } from "react";
 import { AiOutlineStop } from "react-icons/ai";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
@@ -23,12 +25,24 @@ const Message = ({ message }: { message: IMessage }) => {
         ""
       ) : (
         <Avatar className="h-8 w-8">
-          <AvatarImage src="/placeholder-user.jpg" />
-          <AvatarFallback>AC</AvatarFallback>
+          <AvatarImage src={message.sender?.image} />
+          <AvatarFallback>
+            <Image
+              className="rounded-full object-cover w-full h-full"
+              width={50}
+              height={50}
+              src={localAvatar}
+              alt="avatar"
+            />
+          </AvatarFallback>
         </Avatar>
       )}
       {isDeleted ? (
-        <div className="flex flex-col gap-[5px] max-w-[80%] items-end">
+        <div
+          className={`flex flex-col gap-[5px] max-w-[80%] ${
+            isSender ? "items-end" : "items-start"
+          }`}
+        >
           <div className="bg-muted rounded-lg p-3 max-w-[200px]">
             <p className="text-sm text-muted-foreground flex gap-[5px] item-center">
               <AiOutlineStop /> This message has been deleted

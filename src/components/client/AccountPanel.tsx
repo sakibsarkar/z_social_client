@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { logout } from "@/redux/features/auth/auth.slice";
+import { localAvatar, logout } from "@/redux/features/auth/auth.slice";
 import { useAppSelector } from "@/redux/hook";
 import Cookies from "js-cookie";
 import Image from "next/image";
@@ -31,7 +31,7 @@ export function AccountPanel() {
           <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
             <Image
               alt="profile"
-              src={user?.image || "/images/avatar.jpg"}
+              src={user?.image || localAvatar}
               width={80}
               height={80}
               className="w-full h-full object-cover"

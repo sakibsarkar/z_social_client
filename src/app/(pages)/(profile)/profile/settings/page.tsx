@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { localAvatar } from "@/redux/features/auth/auth.slice";
 import {
   useUpdateUserImageMutation,
   useUpdateUserInfoMutation,
@@ -35,7 +36,7 @@ const ProfileUpdate = () => {
   };
   type FormValues = typeof initialValues & Image;
   type key = keyof Pick<FormValues, "firstName" | "lastName">;
-  const [profileUrl, setProfileUrl] = useState(image || "/images/avatar.jpg");
+  const [profileUrl, setProfileUrl] = useState(image || localAvatar);
 
   // mutation
   const [updateDetails] = useUpdateUserInfoMutation();
@@ -63,7 +64,6 @@ const ProfileUpdate = () => {
       }
 
       if (!Object.keys(payload).length) {
-        toast.success("nothing");
         toast.dismiss(toastId);
         return;
       }
