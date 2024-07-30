@@ -65,13 +65,14 @@ const Message = ({ message }: { message: IMessage }) => {
             {isSender ? (
               <MessageOptions
                 messageId={message._id}
+                message={message.message}
                 setIsDeleted={setIsDeleted}
               />
             ) : (
               ""
             )}
             <span
-              className={` rounded-[5px] px-[8px] py-[8px] text-sm w-full  ${
+              className={`whitespace-pre-wrap rounded-[5px] px-[8px] py-[8px] text-sm w-full  ${
                 isSender
                   ? "bg-[#e7efff] rounded-tr-[0]"
                   : "bg-muted rounded-tl-[0]"

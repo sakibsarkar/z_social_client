@@ -28,9 +28,20 @@ const messageApi = api.injectEndpoints({
     }),
     deleteMessage: builder.mutation<{ data: null }, string>({
       query: (id) => ({
-        url: `/message/delete/${id}`, // the id of the the guy im chatting with
+        url: `/message/delete/${id}`, // the id of the message
         method: "DELETE",
       }),
+    }),
+    editMessage: builder.mutation<
+      { data: IMessage },
+      { id: string; message: string }
+    >({
+      query: ({ id, message }) => ({
+        url: `/message/edit/${id}`, // the id of the message
+        body: { message },
+        method: "PUT",
+      }),
+      invalidatesTags: ["message"],
     }),
   }),
 });
@@ -39,4 +50,5 @@ export const {
   useSendMessageMutation,
   useGetMessagesQuery,
   useDeleteMessageMutation,
+  useEditMessageMutation,
 } = messageApi;

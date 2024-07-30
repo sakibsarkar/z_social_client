@@ -53,12 +53,14 @@ const ChatInterface: React.FC<IProps> = ({ selectedChat, setselectedChat }) => {
     if (!socket) return;
 
     socket.on("newMessage", () => {
-      refetch();
+      if (selectedChat) {
+        refetch();
+      }
 
       audio.src = "/audio/receive.m4a";
       audio.play();
     });
-  }, [socket, refetch]);
+  }, [socket, refetch,selectedChat]);
 
   useEffect(() => {
     const chatContainer = document.getElementById("chat-container");
@@ -91,7 +93,8 @@ const ChatInterface: React.FC<IProps> = ({ selectedChat, setselectedChat }) => {
     }
 
     if (isEnterkey) {
-      form.submit();
+      e.preventDefault();
+      form.requestSubmit();
     }
   };
 

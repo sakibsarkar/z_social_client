@@ -15,7 +15,7 @@ type FormValues = typeof initialValues;
 const validationSchema = Yup.object({
   oldPassword: Yup.string().required("* Old password is required"),
   password: Yup.string()
-    .min(6, "Password should atleast 6 character")
+    .min(6, "* Password should atleast 6 character")
     .notOneOf(
       [Yup.ref("oldPassword"), undefined],
       "* Your new password shouldn't match with old password"
